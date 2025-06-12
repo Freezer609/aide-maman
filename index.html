@@ -11,17 +11,23 @@
         /* Définition de la police Inter pour un look moderne et épuré */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f2f5; /* Gris très clair, doux */
-            color: #333; /* Texte sombre pour un bon contraste */
+            background-color: #1a1a1a; /* Fond très sombre */
+            background-image:
+                radial-gradient(circle at 10% 90%, rgba(255, 107, 107, 0.4), transparent 70%), /* Rouge-orangé en bas à gauche */
+                radial-gradient(circle at 90% 90%, rgba(106, 13, 173, 0.4), transparent 70%), /* Violet-bleu en bas à droite */
+                radial-gradient(circle at 20% 10%, rgba(100, 100, 255, 0.1), transparent 50%); /* Légère touche bleue en haut à gauche */
+            background-repeat: no-repeat;
+            color: #e0e0e0; /* Texte clair pour un bon contraste sur le fond sombre */
             line-height: 1.6;
         }
 
         /* Styles généraux pour le conteneur principal */
         .container-wrapper {
-            background: linear-gradient(135deg, #ffffff, #f9f9f9); /* Dégradé très subtil */
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a); /* Dégradé sombre et élégant pour le contenu */
             border-radius: 24px; /* Coins très arrondis pour un look plus premium */
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Ombre plus diffuse */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); /* Ombre plus diffuse et sombre */
             overflow: hidden; /* Assure que le contenu ne dépasse pas les bords arrondis */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Bordure subtile */
         }
 
         /* Style de l'en-tête */
@@ -39,18 +45,19 @@
             letter-spacing: -0.02em; /* Légèrement plus espacé pour un look épuré */
         }
 
-        /* Style des boutons d'onglets */
+        /* Style des boutons d'onglets (non utilisés directement ici, mais styles conservés si nécessaire) */
         .tab-button {
             padding: 1.1rem 1.6rem; /* Un peu plus grand */
             border-radius: 14px; /* Coins arrondis pour les onglets */
             font-weight: 600;
-            color: #666;
+            color: #e0e0e0; /* Texte clair */
             transition: all 0.3s ease-in-out; /* Transitions douces */
-            background-color: #e8e8e8; /* Fond gris clair pour les onglets inactifs */
+            background-color: #4a4a4a; /* Fond gris sombre pour les onglets inactifs */
             flex-grow: 1; /* Permet aux onglets de prendre l'espace disponible */
             text-align: center;
             border: none; /* Pas de bordure pour les onglets */
             cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
 
         .tab-button.active {
@@ -61,48 +68,49 @@
         }
 
         .tab-button:hover:not(.active) {
-            background-color: #d8d8d8; /* Léger changement au survol */
+            background-color: #5a5a5a; /* Léger changement au survol */
             transform: translateY(-2px); /* Effet "pop" subtil */
         }
 
         /* Contenu des onglets */
         .tab-content {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.6s ease-in-out; /* Transition de fondu plus longue */
+            display: none; /* Masqué par défaut, affiché par JS */
             padding: 2.5rem; /* Padding accru */
-            background-color: #ffffff; /* Fond blanc */
+            background-color: #2a2a2a; /* Fond sombre pour le contenu d'onglet */
             border-radius: 18px; /* Coins arrondis */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06); /* Ombre douce */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Ombre douce */
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .tab-content.active {
             display: block;
-            opacity: 1;
         }
 
         /* Cartes de commande individuelles */
         .command-card {
-            background-color: #fcfcfc; /* Très léger hors-blanc */
+            background-color: #383838; /* Gris légèrement plus clair que le fond d'onglet */
             border-radius: 18px; /* Coins très bien arrondis */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04); /* Ombre très légère */
-            border: 1px solid #f2f2f2; /* Bordure très fine */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Ombre légère */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Bordure très fine */
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            color: #c0c0c0; /* Texte clair pour les cartes */
+            margin-bottom: 2rem; /* Augmente l'espace entre les cartes */
         }
 
         .command-card:hover {
             transform: translateY(-6px); /* Légère élévation au survol */
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Ombre plus prononcée */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); /* Ombre plus prononcée */
         }
 
         /* Style des blocs de code */
         code {
-            background-color: #eef2f5; /* Gris-bleu très clair */
+            background-color: #4a4a4a; /* Gris plus clair */
             padding: 0.4em 0.6em;
             border-radius: 8px; /* Plus arrondis */
             font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* Police monospace propre */
             font-size: 0.9em;
-            color: #2c3e50; /* Bleu-gris foncé */
+            color: #8bc34a; /* Vert clair pour le code */
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Style des touches de clavier */
@@ -115,14 +123,25 @@
             box-shadow: 0 2px 0 #333; /* Effet de profondeur */
         }
 
-        /* Styles spécifiques pour les sections */
+        /* Styles spécifiques pour les sections (introduction, aide gemini, conseils) */
         .section-intro, .section-tips, .section-gemini {
-            background-color: #ffffff;
+            background-color: #2a2a2a; /* Fond sombre */
             border-radius: 18px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
             padding: 2.5rem; /* Padding accru */
-            border: 1px solid #eee;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #e0e0e0; /* Texte clair */
         }
+        .section-intro h2, .section-tips h2, .section-gemini h2 {
+            color: #f0f0f0; /* Titres plus clairs dans les sections sombres */
+        }
+        .section-intro p, .section-tips p, .section-gemini p {
+            color: #c0c0c0; /* Texte des paragraphes plus clair */
+        }
+        .section-tips ul li span {
+            color: #a7f3d0; /* Couleur d'accent pour les spans importants */
+        }
+
 
         /* Styles pour les champs de saisie et boutons Gemini */
         .gemini-input-group {
@@ -137,16 +156,23 @@
             flex-grow: 1;
             padding: 0.85rem 1.2rem; /* Plus de padding */
             border-radius: 12px; /* Plus arrondis */
-            border: 1px solid #ddd;
+            border: 1px solid #555; /* Bordure sombre */
+            background-color: #3a3a3a; /* Fond sombre pour l'input */
+            color: #e0e0e0; /* Texte clair dans l'input */
             font-size: 1rem;
             outline: none;
             transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .gemini-input-group input::placeholder,
+        .gemini-input-group textarea::placeholder {
+            color: #999; /* Placeholder plus clair */
         }
 
         .gemini-input-group input:focus,
         .gemini-input-group textarea:focus {
             border-color: #6a82fb;
             box-shadow: 0 0 0 4px rgba(106, 130, 251, 0.25); /* Ombre plus douce */
+            background-color: #4a4a4a; /* Légèrement plus clair au focus */
         }
 
         .gemini-button {
@@ -180,12 +206,12 @@
         .gemini-result {
             margin-top: 1.5rem;
             padding: 1.2rem 1.5rem; /* Plus de padding */
-            background-color: #eef8ff; /* Bleu très clair, encore plus doux */
-            border: 1px solid #cceeff; /* Bordure plus douce */
+            background-color: #3a3a3a; /* Fond sombre pour le résultat */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Bordure plus douce */
             border-radius: 12px; /* Plus arrondis */
             white-space: pre-wrap; /* Préserve les retours à la ligne */
             word-break: break-word; /* Gère les longs mots */
-            color: #0056b3; /* Texte bleu foncé */
+            color: #c0c0c0; /* Texte clair */
             font-size: 1rem; /* Taille de police légèrement plus grande */
         }
 
@@ -203,6 +229,167 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7); /* Fond plus sombre pour le modal */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #3a3a3a, #4a4a4a); /* Dégradé sombre pour le modal */
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            padding: 2rem;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh; /* Limite la hauteur pour le scroll */
+            overflow-y: auto; /* Permet le défilement si le contenu est trop grand */
+            transform: translateY(20px); /* Pour l'animation d'entrée */
+            opacity: 0;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            position: relative; /* Pour le positionnement du bouton retour */
+            color: #e0e0e0; /* Texte clair dans le modal */
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .modal-content h3 {
+            color: #f0f0f0; /* Titre du modal plus clair */
+        }
+
+        .modal-overlay.open .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-back-button {
+            background-color: #666;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+            z-index: 1010;
+        }
+
+        .modal-back-button:hover {
+            background-color: #555;
+        }
+
+        /* Style pour les entrées de la liste des mobs */
+        .mob-list-item {
+            background-color: #4a4a4a; /* Fond sombre pour les items de liste */
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem; /* Plus d'espace entre les éléments de la liste */
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #F0F0F0; /* Texte des mobs en blanc très clair */
+        }
+        .mob-list-item code {
+            background-color: #5a5a5a; /* Code plus sombre */
+            color: #B9F5D3; /* Vert clair pour le code, plus lumineux */
+        }
+        .mob-list-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Nouveaux styles pour le menu principal "app-like" */
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 1rem; /* Ajuste le padding pour l'icône et le texte */
+            border-radius: 20px; /* Coins très arrondis */
+            background-color: #3a3a3a; /* Fond sombre pour la carte de menu */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25); /* Ombre subtile */
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+        .menu-item:active {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-icon-bg {
+            width: 80px; /* Taille du fond de l'icône */
+            height: 80px;
+            border-radius: 18px; /* Légèrement moins arrondi que la carte elle-même */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2), 0 2px 5px rgba(0,0,0,0.2); /* Ombre intérieure et extérieure pour la profondeur */
+            flex-shrink: 0; /* Empêche l'icône de rétrécir */
+        }
+        /* Icones sont des emojis, leur couleur est celle par défaut */
+        .menu-item span[class*="text-4xl"] {
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5)); /* Ombre pour les emojis */
+        }
+
+
+        .menu-label {
+            font-weight: 500;
+            color: #c0c0c0; /* Texte clair pour les labels de menu */
+            font-size: 0.95rem;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        /* Styles pour le conteneur de contenu des catégories qui apparaît/disparaît */
+        #categoryContentContainer {
+            position: relative; /* Important pour le positionnement absolu du bouton retour */
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out; /* Animation pour l'entrée/sortie */
+            transform: translateY(20px); /* Position initiale pour l'animation d'entrée */
+            opacity: 0;
+            pointer-events: none; /* Désactiver les interactions quand c'est caché */
+        }
+
+        #categoryContentContainer.active-view {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto; /* Réactiver les interactions quand c'est visible */
+        }
+
+        #categoryContentContainer.hidden-view {
+            display: none; /* Masque complètement après la transition de sortie */
+        }
+
+        /* Ajustement pour le spinner dans les modals ou les sections dynamiques */
+        #mobListLoading .spinner, #findItemIdSpinner, #explainCommandSpinner {
+            border-color: rgba(255, 255, 255, 0.3); /* Spinners plus clairs sur fond sombre */
+            border-top-color: #fff;
+        }
+
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1); /* Bordure claire pour le footer */
+            color: #888; /* Texte du footer plus clair */
+        }
     </style>
 </head>
 <body class="antialiased p-4 sm:p-6 lg:p-8">
@@ -218,44 +405,89 @@
         </header>
 
         <main class="p-6 sm:p-8 lg:p-10">
-            <!-- Introduction aux commandes -->
-            <section class="mb-12 section-intro">
-                <h2 class="text-3xl font-semibold text-gray-800 mb-6">Qu'est-ce qu'une commande ?</h2>
-                <p class="mb-4 text-gray-700 leading-relaxed">
-                    Les commandes, c'est comme des raccourcis magiques dans Minecraft ! Tu peux les taper dans le chat pour faire plein de choses géniales : te téléporter, obtenir des objets rares, changer la météo ou l'heure... C'est un super pouvoir pour contrôler ton monde !
-                </p>
-                <p class="mb-4 text-gray-700 leading-relaxed">
-                    Pour les utiliser, ouvre simplement le chat en appuyant sur la touche <kbd>T</kbd> (sur PC/Mac) ou l'icône de bulle de dialogue (sur mobile/console). Ensuite, n'oublie jamais de commencer par un <code class="text-blue-600">/</code> !
-                </p>
+            <!-- Nouveau menu principal "app-like" -->
+            <section id="mainMenu" class="py-10 text-center">
+                <h2 class="text-3xl font-semibold text-gray-100 mb-10">Accéder aux Commandes</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
+                    <!-- Boutons du menu (chacun renvoie à une catégorie) -->
+                    <button class="menu-item group" data-target-tab="teleportation">
+                        <div class="menu-icon-bg bg-gradient-to-br from-blue-400 to-blue-600">
+                            <span class="text-4xl">🗺️</span>
+                        </div>
+                        <span class="menu-label">Mouvements & Téléportation</span>
+                    </button>
+                    <button class="menu-item group" data-target-tab="items">
+                        <div class="menu-icon-bg bg-gradient-to-br from-red-400 to-red-600">
+                            <span class="text-4xl">⛏️</span>
+                        </div>
+                        <span class="menu-label">Objets & Inventaire</span>
+                    </button>
+                    <button class="menu-item group" data-target-tab="gamemode">
+                        <div class="menu-icon-bg bg-gradient-to-br from-purple-400 to-purple-600">
+                            <span class="text-4xl">🎮</span>
+                        </div>
+                        <span class="menu-label">Modes de Jeu</span>
+                    </button>
+                    <button class="menu-item group" data-target-tab="environment">
+                        <div class="menu-icon-bg bg-gradient-to-br from-yellow-400 to-yellow-600">
+                            <span class="text-4xl">☀️</span>
+                        </div>
+                        <span class="menu-label">Monde & Environnement</span>
+                    </button>
+                    <button class="menu-item group" data-target-tab="summon">
+                        <div class="menu-icon-bg bg-gradient-to-br from-green-400 to-green-600">
+                            <span class="text-4xl">👾</span>
+                        </div>
+                        <span class="menu-label">Invoquer des Créatures</span>
+                    </button>
+                    <button class="menu-item group" data-target-tab="advanced">
+                        <div class="menu-icon-bg bg-gradient-to-br from-gray-400 to-gray-600">
+                            <span class="text-4xl">⚙️</span>
+                        </div>
+                        <span class="menu-label">Commandes Avancées</span>
+                    </button>
+                    <button class="menu-item group" data-target-tab="potions">
+                        <div class="menu-icon-bg bg-gradient-to-br from-pink-400 to-pink-600">
+                            <span class="text-4xl">🧪</span>
+                        </div>
+                        <span class="menu-label">Effets de Potion</span>
+                    </button>
+                    <!-- Ajout du bouton Aide Générale au menu principal -->
+                    <button class="menu-item group" data-target-tab="general-help">
+                        <div class="menu-icon-bg bg-gradient-to-br from-teal-400 to-blue-500">
+                            <span class="text-4xl">❓</span>
+                        </div>
+                        <span class="menu-label">Aide Générale</span>
+                    </button>
+                    <!-- Ajout du bouton Conseils au menu principal -->
+                    <button class="menu-item group" data-target-tab="tips">
+                        <div class="menu-icon-bg bg-gradient-to-br from-orange-400 to-yellow-500">
+                            <span class="text-4xl">💡</span>
+                        </div>
+                        <span class="menu-label">Conseils Pros</span>
+                    </button>
+                </div>
             </section>
 
-            <!-- Section des catégories de commandes avec onglets -->
-            <section class="mb-12">
-                <h2 class="text-3xl font-semibold text-gray-800 mb-6">Les Commandes par Catégorie</h2>
+            <!-- Contenu des catégories (masqué par défaut, affiché via le menu) -->
+            <div id="categoryContentContainer" class="relative hidden-view">
+                <button id="backToMenuButton" class="back-button absolute top-4 left-4 flex items-center bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors duration-200 py-2 px-3 rounded-xl font-medium shadow-sm">
+                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    Retour au menu
+                </button>
 
-                <!-- Onglets de navigation -->
-                <div class="flex flex-wrap justify-center gap-4 mb-8">
-                    <button class="tab-button active" data-tab="teleportation">🗺️ Mouvements & Téléportation</button>
-                    <button class="tab-button" data-tab="items">⛏️ Objets & Inventaire</button>
-                    <button class="tab-button" data-tab="gamemode">🎮 Modes de Jeu</button>
-                    <button class="tab-button" data-tab="environment">☀️ Monde & Environnement</button>
-                    <button class="tab-button" data-tab="advanced">⚙️ Commandes Avancées</button>
-                    <button class="tab-button" data-tab="potions">🧪 Effets de Potion</button>
-                </div>
-
-                <!-- Contenu des onglets -->
-                <div id="teleportation" class="tab-content active p-6 sm:p-8 bg-white rounded-xl shadow-md">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Mouvements & Téléportation</h3>
-                    <div class="command-card p-6 mb-6">
-                        <h4 class="text-xl font-bold text-blue-700 mb-3"><code>/teleport</code> (ou <code>/tp</code>)</h4>
-                        <p class="text-gray-600 mb-2">Envie de voyager instantanément ? C'est ta commande !</p>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Syntaxe :</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                <div id="teleportation" class="tab-content">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6 mt-12">Mouvements & Téléportation</h3>
+                    <div class="command-card p-6 mb-8">
+                        <h4 class="text-xl font-bold text-blue-400 mb-3"><code>/teleport</code> (ou <code>/tp</code>)</h4>
+                        <p class="text-gray-300 mb-2">Envie de voyager instantanément ? C'est ta commande !</p>
+                        <p class="text-lg font-medium text-gray-200 mb-2">Syntaxe :</p>
+                        <ul class="list-disc list-inside text-gray-300 mb-4 pl-4">
                             <li><code>/teleport &lt;cible&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt;</code> : Te téléporte aux coordonnées X, Y, Z. (Pas de panique, le jeu t'aide avec les chiffres !)</li>
                             <li><code>/teleport &lt;cible&gt; &lt;destination&gt;</code> : Te téléporte à un autre joueur (pratique pour retrouver tes amis !).</li>
                         </ul>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Exemples :</p>
-                        <ul class="list-disc list-inside text-gray-700 pl-4">
+                        <p class="text-lg font-medium text-gray-200 mb-2">Exemples :</p>
+                        <ul class="list-disc list-inside text-gray-300 pl-4">
                             <li><code>/tp @p 100 64 200</code> : Téléporte le joueur le plus proche aux coordonnées 100, 64, 200.</li>
                             <li><code>/tp @a NomDeTonAmie</code> : Téléporte tous les joueurs à "NomDeTonAmie".</li>
                             <li><code>/tp @s ~ ~5 ~</code> : Te fait monter de 5 blocs par rapport à là où tu es. Idéal pour sauter par-dessus un mur !</li>
@@ -263,28 +495,28 @@
                     </div>
                 </div>
 
-                <div id="items" class="tab-content p-6 sm:p-8 bg-white rounded-xl shadow-md">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Objets & Inventaire</h3>
-                    <div class="command-card p-6 mb-6">
-                        <h4 class="text-xl font-bold text-red-700 mb-3"><code>/give</code></h4>
-                        <p class="text-gray-600 mb-2">Besoin d'un diamant ? D'une épée ? Demande, et tu recevras !</p>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Syntaxe :</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                <div id="items" class="tab-content">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6 mt-12">Objets & Inventaire</h3>
+                    <div class="command-card p-6 mb-8">
+                        <h4 class="text-xl font-bold text-red-400 mb-3"><code>/give</code></h4>
+                        <p class="text-gray-300 mb-2">Besoin d'un diamant ? D'une épée ? Demande, et tu recevras !</p>
+                        <p class="text-lg font-medium text-gray-200 mb-2">Syntaxe :</p>
+                        <ul class="list-disc list-inside text-gray-300 mb-4 pl-4">
                             <li><code>/give &lt;cible&gt; &lt;nom_objet&gt; [quantité]</code></li>
                         </ul>
-                        <p class="text-gray-700 mb-2">
-                            <span class="font-semibold text-orange-600">Attention :</span> Le <code class="text-orange-600">nom_objet</code> doit être le nom "technique" du jeu (ex: <code class="text-orange-600">diamond_pickaxe</code> pour une pioche en diamant, <code class="text-orange-600">cooked_beef</code> pour un bœuf cuit).
+                        <p class="text-gray-300 mb-2">
+                            <span class="font-semibold text-orange-400">Attention :</span> Le <code class="text-orange-400">nom_objet</code> doit être le nom "technique" du jeu (ex: <code class="text-orange-400">diamond_pickaxe</code> pour une pioche en diamant, <code class="text-orange-400">cooked_beef</code> pour un bœuf cuit).
                         </p>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Exemples :</p>
-                        <ul class="list-disc list-inside text-gray-700 pl-4">
+                        <p class="text-lg font-medium text-gray-200 mb-2">Exemples :</p>
+                        <ul class="list-disc list-inside text-gray-300 pl-4">
                             <li><code>/give @s diamond_pickaxe 1</code> : Tu te donnes une pioche en diamant.</li>
                             <li><code>/give @s cooked_beef 64</code> : Tu te donnes une pile de 64 bœuf cuit. Miam !</li>
                         </ul>
 
                         <!-- Nouvelle fonctionnalité Gemini: Trouver l'ID d'un objet -->
-                        <div class="mt-8 pt-6 border-t border-gray-200">
-                            <h4 class="text-xl font-bold text-blue-800 mb-3">Trouver l'ID d'un objet ✨</h4>
-                            <p class="text-gray-600 mb-4">Tape le nom d'un objet (même si ce n'est pas le nom exact du jeu) et je t'aiderai à trouver son identifiant technique !</p>
+                        <div class="mt-8 pt-6 border-t border-gray-600">
+                            <h4 class="text-xl font-bold text-blue-400 mb-3">Trouver l'ID d'un objet ✨</h4>
+                            <p class="text-gray-300 mb-4">Tape le nom d'un objet (même si ce n'est pas le nom exact du jeu) et je t'aiderai à trouver son identifiant technique !</p>
                             <div class="gemini-input-group">
                                 <input type="text" id="itemNameInput" placeholder="Ex: pioche en fer, pomme d'or" class="flex-1">
                                 <button id="findItemIdButton" class="gemini-button">
@@ -297,112 +529,144 @@
                     </div>
                 </div>
 
-                <div id="gamemode" class="tab-content p-6 sm:p-8 bg-white rounded-xl shadow-md">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Modes de Jeu</h3>
-                    <div class="command-card p-6 mb-6">
-                        <h4 class="text-xl font-bold text-purple-700 mb-3"><code>/gamemode</code></h4>
-                        <p class="text-gray-600 mb-2">Envie de voler, de construire sans limites, ou de survivre ? Change ton mode de jeu !</p>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Syntaxe :</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                <div id="gamemode" class="tab-content">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6 mt-12">Modes de Jeu</h3>
+                    <div class="command-card p-6 mb-8">
+                        <h4 class="text-xl font-bold text-purple-400 mb-3"><code>/gamemode</code></h4>
+                        <p class="text-gray-300 mb-2">Envie de voler, de construire sans limites, ou de survivre ? Change ton mode de jeu !</p>
+                        <p class="text-lg font-medium text-gray-200 mb-2">Syntaxe :</p>
+                        <ul class="list-disc list-inside text-gray-300 mb-4 pl-4">
                             <li><code>/gamemode &lt;mode&gt; [cible]</code></li>
                         </ul>
-                        <p class="text-gray-700 mb-2">Les modes les plus courants :</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                        <p class="text-gray-300 mb-2">Les modes les plus courants :</p>
+                        <ul class="list-disc list-inside text-gray-300 mb-4 pl-4">
                             <li><code>survival</code> (ou <code>s</code>) : Le mode normal, où il faut survivre.</li>
                             <li><code>creative</code> (ou <code>c</code>) : Le mode construction, vols et objets à l'infini !</li>
                             <li><code>adventure</code> (ou <code>a</code>) : Mode aventure (pour les cartes spéciales).</li>
                             <li><code>spectator</code> (ou <code>sp</code>) : Mode spectateur (pour observer sans interagir).</li>
                         </ul>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Exemples :</p>
-                        <ul class="list-disc list-inside text-gray-700 pl-4">
+                        <p class="text-lg font-medium text-gray-200 mb-2">Exemples :</p>
+                        <ul class="list-disc list-inside text-gray-300 pl-4">
                             <li><code>/gamemode creative @s</code> : Tu passes en mode créatif. Le rêve !</li>
                             <li><code>/gamemode survival @a</code> : Tous les joueurs passent en mode survie.</li>
                         </ul>
                     </div>
                 </div>
 
-                <div id="environment" class="tab-content p-6 sm:p-8 bg-white rounded-xl shadow-md">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Monde & Environnement</h3>
-                    <div class="command-card p-6 mb-6">
-                        <h4 class="text-xl font-bold text-yellow-700 mb-3"><code>/time set</code></h4>
-                        <p class="text-gray-600 mb-2">Marre de la nuit ? Envie du jour ? Contrôle le temps !</p>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Syntaxe :</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                <div id="environment" class="tab-content">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6 mt-12">Monde & Environnement</h3>
+                    <div class="command-card p-6 mb-8">
+                        <h4 class="text-xl font-bold text-yellow-400 mb-3"><code>/time set</code></h4>
+                        <p class="text-gray-300 mb-2">Marre de la nuit ? Envie du jour ? Contrôle le temps !</p>
+                        <p class="text-lg font-medium text-gray-200 mb-2">Syntaxe :</p>
+                        <ul class="list-disc list-inside text-gray-300 mb-4 pl-4">
                             <li><code>/time set &lt;temps&gt;</code></li>
                         </ul>
-                        <p class="text-gray-700 mb-2">Les options de temps courantes :</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                        <p class="text-gray-300 mb-2">Les options de temps courantes :</p>
+                        <ul class="list-disc list-inside text-gray-300 mb-4 pl-4">
                             <li><code>day</code> : Fait jour instantanément.</li>
                             <li><code>night</code> : Fait nuit.</li>
                             <li><code>noon</code> : Midi pile.</li>
                             <li><code>midnight</code> : Minuit.</li>
                             <li>Tu peux aussi utiliser des chiffres (de 0 à 24000) pour une heure ultra précise.</li>
                         </ul>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Exemples :</p>
-                        <ul class="list-disc list-inside text-gray-700 pl-4">
+                        <p class="text-lg font-medium text-gray-200 mb-2">Exemples :</p>
+                        <ul class="list-disc list-inside text-gray-300 pl-4">
                             <li><code>/time set day</code> : Hop, le soleil se lève !</li>
                             <li><code>/time set night</code> : La nuit tombe.</li>
                         </ul>
                     </div>
 
-                    <div class="command-card p-6 mb-6">
-                        <h4 class="text-xl font-bold text-green-700 mb-3"><code>/weather</code></h4>
-                        <p class="text-gray-600 mb-2">Fais pleuvoir, ensoleille le ciel, ou provoque un orage épique !</p>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Syntaxe :</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                    <div class="command-card p-6 mb-8">
+                        <h4 class="text-xl font-bold text-green-400 mb-3"><code>/weather</code></h4>
+                        <p class="text-gray-300 mb-2">Fais pleuvoir, ensoleille le ciel, ou provoque un orage épique !</p>
+                        <p class="text-lg font-medium text-gray-200 mb-2">Syntaxe :</p>
+                        <ul class="list-disc list-inside text-gray-300 mb-4 pl-4">
                             <li><code>/weather &lt;type&gt; [durée_en_secondes]</code></li>
                         </ul>
-                        <p class="text-gray-700 mb-2">Les types de météo :</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                        <p class="text-gray-300 mb-2">Les types de météo :</p>
+                        <ul class="list-disc list-inside text-gray-300 mb-4 pl-4">
                             <li><code>clear</code> : Grand soleil !</li>
                             <li><code>rain</code> : Il pleut.</li>
                             <li><code>thunder</code> : Orage (pluie et foudre !).</li>
                         </ul>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Exemples :</p>
-                        <ul class="list-disc list-inside text-gray-700 pl-4">
+                        <p class="text-lg font-medium text-gray-200 mb-2">Exemples :</p>
+                        <ul class="list-disc list-inside text-gray-300 pl-4">
                             <li><code>/weather clear</code> : Le temps se dégage.</li>
                             <li><code>/weather rain 600</code> : Fait pleuvoir pendant 10 minutes (600 secondes).</li>
                         </ul>
                     </div>
 
-                    <div class="command-card p-6 mb-6">
-                        <h4 class="text-xl font-bold text-teal-700 mb-3"><code>/locate</code></h4>
-                        <p class="text-gray-600 mb-2">Tu cherches un village, un donjon ou un monument sous-marin ? Cette commande te dit où aller !</p>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Syntaxe :</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                    <div class="command-card p-6 mb-8">
+                        <h4 class="text-xl font-bold text-teal-400 mb-3"><code>/locate</code></h4>
+                        <p class="text-gray-300 mb-2">Tu cherches un village, un donjon ou un monument sous-marin ? Cette commande te dit où aller !</p>
+                        <p class="text-lg font-medium text-gray-200 mb-2">Syntaxe :</p>
+                        <ul class="list-disc list-inside text-gray-300 mb-4 pl-4">
                             <li><code>/locate structure &lt;nom_structure&gt;</code> : Trouve les coordonnées de la structure la plus proche.</li>
                         </ul>
-                        <p class="text-gray-700 mb-2">
-                            <span class="font-semibold text-pink-600">Astuce :</span> Quand tu tapes <code>/locate structure</code>, le jeu va te proposer une liste de structures à trouver (ex: <code>village</code>, <code>pillageroutpost</code>, <code>monument</code>, <code>stronghold</code>, etc.). Choisis celle que tu veux !
+                        <p class="text-gray-300 mb-2">
+                            <span class="font-semibold text-pink-400">Astuce :</span> Quand tu tapes <code>/locate structure</code>, le jeu va te proposer une liste de structures à trouver (ex: <code>village</code>, <code>pillageroutpost</code>, <code>monument</code>, <code>stronghold</code>, etc.). Choisis celle que tu veux !
                         </p>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Exemples :</p>
-                        <ul class="list-disc list-inside text-gray-700 pl-4">
+                        <p class="text-lg font-medium text-gray-200 mb-2">Exemples :</p>
+                        <ul class="list-disc list-inside text-gray-300 pl-4">
                             <li><code>/locate structure village</code> : Te donnera les coordonnées du village le plus proche.</li>
                             <li><code>/locate structure stronghold</code> : Te montrera où se trouve la forteresse (pour accéder à l'End !).</li>
                         </ul>
-                        <p class="text-gray-700">
+                        <p class="text-gray-300">
                             Une fois que tu as les coordonnées (par exemple X: 123 Y: ? Z: 456), tu peux utiliser <code>/teleport</code> pour y aller directement !
                         </p>
                     </div>
                 </div>
 
-                <div id="advanced" class="tab-content p-6 sm:p-8 bg-white rounded-xl shadow-md">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6">⚙️ Commandes Avancées</h3>
-                    <p class="text-gray-600 mb-4">Ces commandes sont un peu plus complexes, mais elles te donneront un contrôle énorme sur ton monde ! Prends ton temps pour les maîtriser.</p>
+                <!-- Nouvelle catégorie: Invoquer des Créatures -->
+                <div id="summon" class="tab-content">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6 mt-12">👾 Invoquer des Créatures</h3>
+                    <div class="command-card p-6 mb-8">
+                        <h4 class="text-xl font-bold text-gray-400 mb-3"><code>/summon</code></h4>
+                        <p class="text-gray-300 mb-2">Fais apparaître n'importe quelle créature ou entité dans ton monde ! Du cochon au dragon de l'End, c'est toi le maître.</p>
+                        <p class="text-lg font-medium text-gray-200 mb-2">Syntaxe :</p>
+                        <ul class="list-disc list-inside text-gray-300 mb-4 pl-4">
+                            <li><code>/summon &lt;nom_entité&gt; [x] [y] [z]</code></li>
+                        </ul>
+                        <p class="text-gray-300 mb-2">
+                            <span class="font-semibold text-red-400">Attention :</span> Le <code class="text-red-400">nom_entité</code> doit être l'identifiant technique de la créature (ex: <code class="text-red-400">cow</code> pour une vache, <code class="text-red-400">zombie</code> pour un zombie).
+                        </p>
+                        <p class="text-lg font-medium text-gray-200 mb-2">Exemples :</p>
+                        <ul class="list-disc list-inside text-gray-300 pl-4">
+                            <li><code>/summon chicken</code> : Fait apparaître un poulet juste devant toi.</li>
+                            <li><code>/summon wolf ~5 ~ ~</code> : Fait apparaître un loup 5 blocs à ta droite.</li>
+                            <li><code>/summon ender_dragon ~ ~10 ~</code> : Fait apparaître un dragon de l'End à 10 blocs au-dessus de toi ! (Attention, ça peut faire des dégâts !)</li>
+                        </ul>
+
+                        <!-- Bouton pour obtenir la liste des mobs -->
+                        <div class="mt-8 pt-6 border-t border-gray-600">
+                            <h4 class="text-xl font-bold text-blue-400 mb-3">Besoin d'une liste des créatures ? ✨</h4>
+                            <p class="text-gray-300 mb-4">Clique ici pour obtenir la liste de tous les mobs de Minecraft Bedrock, classés du plus utile au moins utile !</p>
+                            <button id="getMobListButton" class="gemini-button">
+                                <span id="getMobListSpinner" class="spinner hidden"></span>
+                                Afficher la liste des créatures
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="advanced" class="tab-content">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6 mt-12">⚙️ Commandes Avancées</h3>
+                    <p class="text-gray-300 mb-4">Ces commandes sont un peu plus complexes, mais elles te donneront un contrôle énorme sur ton monde ! Prends ton temps pour les maîtriser.</p>
 
                     <!-- Commande: /fill -->
-                    <div class="command-card p-6 mb-6">
-                        <h4 class="text-xl font-bold text-orange-700 mb-3"><code>/fill</code></h4>
-                        <p class="text-gray-600 mb-2">Pour remplir une zone entière avec un type de bloc, ou pour enlever des blocs rapidement. Idéal pour construire ou démolir !</p>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Syntaxe :</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                    <div class="command-card p-6 mb-8">
+                        <h4 class="text-xl font-bold text-orange-400 mb-3"><code>/fill</code></h4>
+                        <p class="text-gray-300 mb-2">Pour remplir une zone entière avec un type de bloc, ou pour enlever des blocs rapidement. Idéal pour construire ou démolir !</p>
+                        <p class="text-lg font-medium text-gray-200 mb-2">Syntaxe :</p>
+                        <ul class="list-disc list-inside text-gray-300 mb-4 pl-4">
                             <li><code>/fill &lt;x1&gt; &lt;y1&gt; &lt;z1&gt; &lt;x2&gt; &lt;y2&gt; &lt;z2&gt; &lt;nom_bloc&gt; [type_de_remplacement]</code></li>
                         </ul>
-                        <p class="text-gray-700 mb-2">
-                            <span class="font-semibold text-red-600">Comment ça marche :</span> Tu as besoin de deux points (deux sets de coordonnées) pour définir un coin de la zone et le coin opposé.
+                        <p class="text-gray-300 mb-2">
+                            <span class="font-semibold text-red-400">Comment ça marche :</span> Tu as besoin de deux points (deux sets de coordonnées) pour définir un coin de la zone et le coin opposé.
                         </p>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Exemples :</p>
-                        <ul class="list-disc list-inside text-gray-700 pl-4">
+                        <p class="text-lg font-medium text-gray-200 mb-2">Exemples :</p>
+                        <ul class="list-disc list-inside text-gray-300 pl-4">
                             <li><code>/fill 10 60 10 20 65 20 stone</code> : Remplira une zone de 10x5x10 blocs avec de la pierre, entre les coordonnées (10,60,10) et (20,65,20).</li>
                             <li><code>/fill ~ ~-5 ~ ~ ~ ~ grass replace dirt</code> : Transforme la terre en herbe dans une petite zone sous toi.</li>
                             <li><code>/fill 10 60 10 20 65 20 air</code> : Enlève tous les blocs dans cette zone (les remplace par de l'air).</li>
@@ -410,151 +674,151 @@
                     </div>
 
                     <!-- Commande: /clone -->
-                    <div class="command-card p-6 mb-6">
-                        <h4 class="text-xl font-bold text-indigo-700 mb-3"><code>/clone</code></h4>
-                        <p class="text-gray-600 mb-2">Pour copier-coller des bâtiments ou des structures entières en un clin d'œil ! Super pour dupliquer.</p>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Syntaxe :</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                    <div class="command-card p-6 mb-8">
+                        <h4 class="text-xl font-bold text-indigo-400 mb-3"><code>/clone</code></h4>
+                        <p class="text-gray-300 mb-2">Pour copier-coller des bâtiments ou des structures entières en un clin d'œil ! Super pour dupliquer.</p>
+                        <p class="text-lg font-medium text-gray-200 mb-2">Syntaxe :</p>
+                        <ul class="list-disc list-inside text-gray-300 mb-4 pl-4">
                             <li><code>/clone &lt;x1&gt; &lt;y1&gt; &lt;z1&gt; &lt;x2&gt; &lt;y2&gt; &lt;z2&gt; &lt;x_destination&gt; &lt;y_destination&gt; &lt;z_destination&gt;</code></li>
                         </ul>
-                        <p class="text-gray-700 mb-2">
-                            <span class="font-semibold text-red-600">Comment ça marche :</span> Tu as trois sets de coordonnées : les deux premiers définissent la zone à copier, et le troisième est le coin où tu veux coller ta copie.
+                        <p class="text-gray-300 mb-2">
+                            <span class="font-semibold text-red-400">Comment ça marche :</span> Tu as trois sets de coordonnées : les deux premiers définissent la zone à copier, et le troisième est le coin où tu veux coller ta copie.
                         </p>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Exemple :</p>
-                        <ul class="list-disc list-inside text-gray-700 pl-4">
+                        <p class="text-lg font-medium text-gray-200 mb-2">Exemple :</p>
+                        <ul class="list-disc list-inside text-gray-300 pl-4">
                             <li><code>/clone 10 64 10 20 70 20 100 64 100</code> : Copie la structure entre (10,64,10) et (20,70,20) et la colle au point (100,64,100).</li>
                         </ul>
                     </div>
 
                      <!-- Commande: /execute (Version simplifiée) -->
-                    <div class="command-card p-6 mb-6">
-                        <h4 class="text-xl font-bold text-gray-700 mb-3"><code>/execute</code></h4>
-                        <p class="text-gray-600 mb-2">La commande la plus puissante ! Elle permet de faire exécuter une autre commande PAR ou À PARTIR de quelque chose (un joueur, un mob, un endroit...). C'est la base des systèmes automatiques complexes.</p>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Syntaxe Simplifiée (très nombreuses variantes !) :</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                    <div class="command-card p-6 mb-8">
+                        <h4 class="text-xl font-bold text-gray-400 mb-3"><code>/execute</code></h4>
+                        <p class="text-gray-300 mb-2">La commande la plus puissante ! Elle permet de faire exécuter une autre commande PAR ou À PARTIR de quelque chose (un joueur, un mob, un endroit...). C'est la base des systèmes automatiques complexes.</p>
+                        <p class="text-lg font-medium text-gray-200 mb-2">Syntaxe Simplifiée (très nombreuses variantes !) :</p>
+                        <ul class="list-disc list-inside text-gray-300 mb-4 pl-4">
                             <li><code>/execute at &lt;entité&gt; run &lt;commande&gt;</code> : Exécute une commande à la position de l'entité.</li>
                             <li><code>/execute as &lt;entité&gt; run &lt;commande&gt;</code> : Exécute une commande comme si l'entité l'avait tapée.</li>
                         </ul>
-                        <p class="text-lg font-medium text-gray-800 mb-2">Exemples (simples) :</p>
-                        <ul class="list-disc list-inside text-gray-700 pl-4">
+                        <p class="text-lg font-medium text-gray-200 mb-2">Exemples (simples) :</p>
+                        <ul class="list-disc list-inside text-gray-300 pl-4">
                             <li><code>/execute at @e[type=cow] run summon chicken</code> : Fait apparaître un poulet à la position de chaque vache. (Rigolo, non ?)</li>
                             <li><code>/execute as @p run say Bonjour !</code> : Fait dire "Bonjour !" au joueur le plus proche.</li>
                         </ul>
-                        <p class="text-gray-700 mt-4">
-                            <span class="font-semibold text-blue-600">Conseil :</span> La commande <code>/execute</code> est très complexe et a de nombreuses options. Tu peux utiliser la fonction "Aide Générale" ci-dessous pour avoir plus de détails si tu veux creuser !
+                        <p class="text-gray-300 mt-4">
+                            <span class="font-semibold text-blue-400">Conseil :</span> La commande <code>/execute</code> est très complexe et a de nombreuses options. Tu peux utiliser la fonction "Aide Générale" ci-dessous pour avoir plus de détails si tu veux creuser !
                         </p>
                     </div>
                 </div>
 
-                <div id="potions" class="tab-content p-6 sm:p-8 bg-white rounded-xl shadow-md">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6">🧪 Effets de Potion</h3>
-                    <p class="text-gray-600 mb-4">La commande <code>/effect</code> te permet de t'appliquer (ou d'appliquer à d'autres) des effets de potion sans boire de potion ! Très pratique pour obtenir des super-pouvoirs.</p>
-                    <p class="text-lg font-medium text-gray-800 mb-2">Syntaxe générale :</p>
-                    <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                <div id="potions" class="tab-content">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6 mt-12">🧪 Effets de Potion</h3>
+                    <p class="text-gray-300 mb-4">La commande <code>/effect</code> te permet de t'appliquer (ou d'appliquer à d'autres) des effets de potion sans boire de potion ! Très pratique pour obtenir des super-pouvoirs.</p>
+                    <p class="text-lg font-medium text-gray-200 mb-2">Syntaxe générale :</p>
+                    <ul class="list-disc list-inside text-gray-300 mb-4 pl-4">
                         <li><code>/effect &lt;cible&gt; &lt;effet_de_potion&gt; [durée] [niveau_d'amplification] [cacher_particules:true/false]</code></li>
                     </ul>
-                    <p class="text-gray-700 mb-2">
-                        <span class="font-semibold text-purple-600">Durée :</span> Utilise <code>infinite</code> pour une durée illimitée, ou un nombre en secondes (ex: <code>60</code> pour 1 minute).
-                        <br><span class="font-semibold text-purple-600">Niveau d'amplification :</span> De 0 à 255. Plus le nombre est grand, plus l'effet est puissant (ex: <code>speed 1</code> vs <code>speed 2</code>).
-                        <br><span class="font-semibold text-purple-600">Cacher les particules :</span> <code>true</code> pour les cacher (plus discret), <code>false</code> pour les montrer.
+                    <p class="text-gray-300 mb-2">
+                        <span class="font-semibold text-purple-400">Durée :</span> Utilise <code>infinite</code> pour une durée illimitée, ou un nombre en secondes (ex: <code>60</code> pour 1 minute).
+                        <br><span class="font-semibold text-purple-400">Niveau d'amplification :</span> De 0 à 255. Plus le nombre est grand, plus l'effet est puissant (ex: <code>speed 1</code> vs <code>speed 2</code>).
+                        <br><span class="font-semibold text-purple-400">Cacher les particules :</span> <code>true</code> pour les cacher (plus discret), <code>false</code> pour les montrer.
                     </p>
-                    <p class="text-lg font-medium text-gray-800 mt-6 mb-2">Les effets de potion les plus utiles et amusants :</p>
+                    <p class="text-lg font-medium text-gray-200 mt-6 mb-2">Les effets de potion les plus utiles et amusants :</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                         <!-- Effet: Speed -->
-                        <div class="command-card p-5 border-l-4 border-emerald-500">
-                            <h4 class="text-xl font-bold text-emerald-700 mb-2">🏃 Vitesse (Speed)</h4>
-                            <p class="text-gray-600 mb-2">Pour courir super vite ! Indispensable pour explorer ou fuir.</p>
-                            <code class="block text-emerald-800">/effect @s speed infinite 5 true</code>
-                            <p class="text-sm text-gray-500 mt-2"> (Vitesse maximale pour toujours, sans particules)</p>
+                        <div class="command-card p-5 border-l-4 border-emerald-500 mb-0">
+                            <h4 class="text-xl font-bold text-emerald-400 mb-2">🏃 Vitesse (Speed)</h4>
+                            <p class="text-gray-300 mb-2">Pour courir super vite ! Indispensable pour explorer ou fuir.</p>
+                            <code class="block text-emerald-400">/effect @s speed infinite 5 true</code>
+                            <p class="text-sm text-gray-400 mt-2"> (Vitesse maximale pour toujours, sans particules)</p>
                         </div>
                         <!-- Effet: Strength -->
-                        <div class="command-card p-5 border-l-4 border-red-500">
-                            <h4 class="text-xl font-bold text-red-700 mb-2">💪 Force (Strength)</h4>
-                            <p class="text-gray-600 mb-2">Pour faire des dégâts incroyables aux monstres !</p>
-                            <code class="block text-red-800">/effect @s strength infinite 5 true</code>
+                        <div class="command-card p-5 border-l-4 border-red-500 mb-0">
+                            <h4 class="text-xl font-bold text-red-400 mb-2">💪 Force (Strength)</h4>
+                            <p class="text-gray-300 mb-2">Pour faire des dégâts incroyables aux monstres !</p>
+                            <code class="block text-red-400">/effect @s strength infinite 5 true</code>
                         </div>
                         <!-- Effet: Jump Boost -->
-                        <div class="command-card p-5 border-l-4 border-lime-500">
-                            <h4 class="text-xl font-bold text-lime-700 mb-2">⬆️ Saut Amélioré (Jump Boost)</h4>
-                            <p class="text-gray-600 mb-2">Pour sauter super haut et atteindre des endroits inaccessibles.</p>
-                            <code class="block text-lime-800">/effect @s jump_boost infinite 10 true</code>
+                        <div class="command-card p-5 border-l-4 border-lime-500 mb-0">
+                            <h4 class="text-xl font-bold text-lime-400 mb-2">⬆️ Saut Amélioré (Jump Boost)</h4>
+                            <p class="text-gray-300 mb-2">Pour sauter super haut et atteindre des endroits inaccessibles.</p>
+                            <code class="block text-lime-400">/effect @s jump_boost infinite 10 true</code>
                         </div>
                         <!-- Effet: Regeneration -->
-                        <div class="command-card p-5 border-l-4 border-pink-500">
-                            <h4 class="text-xl font-bold text-pink-700 mb-2">❤️ Régénération (Regeneration)</h4>
-                            <p class="text-gray-600 mb-2">Pour récupérer ta vie très rapidement, même en combat !</p>
-                            <code class="block text-pink-800">/effect @s regeneration infinite 5 true</code>
+                        <div class="command-card p-5 border-l-4 border-pink-500 mb-0">
+                            <h4 class="text-xl font-bold text-pink-400 mb-2">❤️ Régénération (Regeneration)</h4>
+                            <p class="text-gray-300 mb-2">Pour récupérer ta vie très rapidement, même en combat !</p>
+                            <code class="block text-pink-400">/effect @s regeneration infinite 5 true</code>
                         </div>
                         <!-- Effet: Night Vision -->
-                        <div class="command-card p-5 border-l-4 border-purple-500">
-                            <h4 class="text-xl font-bold text-purple-700 mb-2">👁️ Vision Nocturne (Night Vision)</h4>
-                            <p class="text-gray-600 mb-2">Pour voir dans le noir comme en plein jour !</p>
-                            <code class="block text-purple-800">/effect @s night_vision infinite 1 true</code>
+                        <div class="command-card p-5 border-l-4 border-purple-500 mb-0">
+                            <h4 class="text-xl font-bold text-purple-400 mb-2">👁️ Vision Nocturne (Night Vision)</h4>
+                            <p class="text-gray-300 mb-2">Pour voir dans le noir comme en plein jour !</p>
+                            <code class="block text-purple-400">/effect @s night_vision infinite 1 true</code>
                         </div>
                         <!-- Effet: Invisibility -->
-                        <div class="command-card p-5 border-l-4 border-blue-500">
-                            <h4 class="text-xl font-bold text-blue-700 mb-2">👻 Invisibilité (Invisibility)</h4>
-                            <p class="text-gray-600 mb-2">Pour te rendre invisible aux yeux des monstres (et des amis) !</p>
-                            <code class="block text-blue-800">/effect @s invisibility infinite 1 true</code>
+                        <div class="command-card p-5 border-l-4 border-blue-500 mb-0">
+                            <h4 class="text-xl font-bold text-blue-400 mb-2">👻 Invisibilité (Invisibility)</h4>
+                            <p class="text-gray-300 mb-2">Pour te rendre invisible aux yeux des monstres (et des amis) !</p>
+                            <code class="block text-blue-400">/effect @s invisibility infinite 1 true</code>
                         </div>
                          <!-- Effet: Remove all effects -->
-                        <div class="command-card p-5 border-l-4 border-gray-500 md:col-span-2">
-                            <h4 class="text-xl font-bold text-gray-700 mb-2">❌ Retirer les effets</h4>
-                            <p class="text-gray-600 mb-2">Pour annuler tous les effets de potion que tu as sur toi.</p>
-                            <code class="block text-gray-800">/effect @s clear</code>
+                        <div class="command-card p-5 border-l-4 border-gray-500 md:col-span-2 mb-0">
+                            <h4 class="text-xl font-bold text-gray-400 mb-2">❌ Retirer les effets</h4>
+                            <p class="text-gray-300 mb-2">Pour annuler tous les effets de potion que tu as sur toi.</p>
+                            <code class="block text-gray-400">/effect @s clear</code>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <!-- Nouvelle section: Aide Générale avec Gemini -->
-            <section class="mb-12 section-gemini">
-                <h2 class="text-3xl font-semibold text-gray-800 mb-6">Aide Générale sur les Commandes ✨</h2>
-                <p class="text-gray-700 mb-4">
-                    Besoin d'une explication sur une commande que tu as vue, ou un concept de Minecraft que tu ne comprends pas ? Demande à Gemini !
-                </p>
-                <div class="gemini-input-group flex-col">
-                    <textarea id="commandExplainerInput" rows="4" placeholder="Ex: Qu'est-ce que la commande /execute ? Ou: Comment fonctionnent les coordonnées Y ?" class="w-full"></textarea>
-                    <button id="explainCommandButton" class="gemini-button w-full sm:w-auto">
-                        <span id="explainCommandSpinner" class="spinner hidden"></span>
-                        Obtenir une explication
-                    </button>
+                <!-- Section Aide Générale avec Gemini -->
+                <div id="general-help" class="tab-content">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6 mt-12">Aide Générale sur les Commandes ✨</h3>
+                    <p class="text-gray-300 mb-4">
+                        Besoin d'une explication sur une commande que tu as vue, ou un concept de Minecraft que tu ne comprends pas ? Demande à Gemini !
+                    </p>
+                    <div class="gemini-input-group flex-col">
+                        <textarea id="commandExplainerInput" rows="4" placeholder="Ex: Qu'est-ce que la commande /execute ? Ou: Comment fonctionnent les coordonnées Y ?" class="w-full"></textarea>
+                        <button id="explainCommandButton" class="gemini-button">
+                            <span id="explainCommandSpinner" class="spinner hidden"></span>
+                            Obtenir une explication
+                        </button>
+                    </div>
+                    <div id="explainCommandResult" class="gemini-result hidden"></div>
                 </div>
-                <div id="explainCommandResult" class="gemini-result hidden"></div>
-            </section>
 
-            <!-- Section des conseils pour les débutantes -->
-            <section class="mb-12 section-tips">
-                <h2 class="text-3xl font-semibold text-gray-800 mb-6">Conseils pour les Futures Pros</h2>
-                <ul class="list-disc list-inside text-gray-700 leading-relaxed mb-6 pl-4">
-                    <li class="mb-3">
-                        <span class="font-bold text-blue-600">Ouvrir le chat :</span> Souviens-toi, la touche <kbd>T</kbd> ou l'icône de la bulle de dialogue, et c'est parti !
-                    </li>
-                    <li class="mb-3">
-                        <span class="font-bold text-blue-600">Le slash (<code class="text-blue-600">/</code>) :</span> C'est le secret ! Sans lui, Minecraft ne comprendra pas que c'est une commande.
-                    </li>
-                    <li class="mb-3">
-                        <span class="font-bold text-blue-600">L'auto-complétion, ton amie :</span> Quand tu commences à taper, le jeu te propose des options. Utilise <kbd>Tab</kbd> pour choisir. C'est super pratique pour éviter les fautes !
-                    </li>
-                    <li class="mb-3">
-                        <span class="font-bold text-blue-600">Qui cibler ? Les sélecteurs :</span>
-                        <ul class="list-disc list-inside ml-6 mt-1 text-gray-600">
-                            <li><code class="text-teal-600">@s</code> : C'est toi-même.</li>
-                            <li><code class="text-teal-600">@p</code> : Le joueur le plus proche (utile en multi !).</li>
-                            <li><code class="text-teal-600">@a</code> : Tous les joueurs.</li>
-                            <li><code class="text-teal-600">@r</code> : Un joueur au hasard.</li>
-                            <li><code class="text-teal-600">@e</code> : Toutes les entités (joueurs, animaux, monstres, objets...).</li>
-                        </ul>
-                    </li>
-                    <li class="mb-3">
-                        <span class="font-bold text-blue-600">Les coordonnées <code class="text-indigo-600">x y z</code> :</span> Ça indique un endroit précis dans le monde. <code class="text-indigo-600">y</code>, c'est l'altitude.
-                    </li>
-                    <li class="mb-3">
-                        <span class="font-bold text-blue-600">La version du jeu :</span> Ces commandes fonctionnent avec Minecraft Bedrock 1.21.82, et souvent aussi avec d'autres versions. Mais pas d'inquiétude, elles sont assez stables !
-                    </li>
-                </ul>
-            </section>
+                <!-- Section Conseils pour les Futures Pros -->
+                <div id="tips" class="tab-content">
+                    <h3 class="text-2xl font-bold text-gray-100 mb-6 mt-12">Conseils pour les Futures Pros</h3>
+                    <ul class="list-disc list-inside text-gray-300 leading-relaxed mb-6 pl-4">
+                        <li class="mb-3">
+                            <span class="font-bold text-blue-400">Ouvrir le chat :</span> Souviens-toi, la touche <kbd>T</kbd> ou l'icône de la bulle de dialogue, et c'est parti !
+                        </li>
+                        <li class="mb-3">
+                            <span class="font-bold text-blue-400">Le slash (<code class="text-blue-400">/</code>) :</span> C'est le secret ! Sans lui, Minecraft ne comprendra pas que c'est une commande.
+                        </li>
+                        <li class="mb-3">
+                            <span class="font-bold text-blue-400">L'auto-complétion, ton amie :</span> Quand tu commences à taper, le jeu te propose des options. Utilise <kbd>Tab</kbd> pour choisir. C'est super pratique pour éviter les fautes !
+                        </li>
+                        <li class="mb-3">
+                            <span class="font-bold text-blue-400">Qui cibler ? Les sélecteurs :</span>
+                            <ul class="list-disc list-inside ml-6 mt-1 text-gray-400">
+                                <li><code class="text-teal-400">@s</code> : C'est toi-même.</li>
+                                <li><code class="text-teal-400">@p</code> : Le joueur le plus proche (utile en multi !).</li>
+                                <li><code class="text-teal-400">@a</code> : Tous les joueurs.</li>
+                                <li><code class="text-teal-400">@r</code> : Un joueur au hasard.</li>
+                                <li><code class="text-teal-400">@e</code> : Toutes les entités (joueurs, animaux, monstres, objets...).</li>
+                            </ul>
+                        </li>
+                        <li class="mb-3">
+                            <span class="font-bold text-blue-400">Les coordonnées <code class="text-indigo-400">x y z</code> :</span> Ça indique un endroit précis dans le monde. <code class="text-indigo-400">y</code>, c'est l'altitude.
+                        </li>
+                        <li class="mb-3">
+                            <span class="font-bold text-blue-400">La version du jeu :</span> Ces commandes fonctionnent avec Minecraft Bedrock 1.21.82, et souvent aussi avec d'autres versions. Mais pas d'inquiétude, elles sont assez stables !
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </main>
 
         <!-- Conclusion -->
@@ -568,23 +832,56 @@
         </footer>
     </div>
 
+    <!-- Modal pour la liste des mobs -->
+    <div id="mobListModal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="mobListModalBackButton" class="modal-back-button">
+                Retour
+            </button>
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center mt-8">Liste des Créatures Minecraft (Mobs)</h3>
+            <div id="mobListContainer" class="mt-4">
+                <div id="mobListLoading" class="text-center text-gray-600 hidden">
+                    <div class="spinner mx-auto mb-4"></div>
+                    Chargement de la liste des créatures...
+                </div>
+                <div id="mobListResult"></div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Fonctionnalité des onglets
         document.addEventListener('DOMContentLoaded', () => {
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabContents = document.querySelectorAll('.tab-content');
+            const mainMenu = document.getElementById('mainMenu');
+            const categoryContentContainer = document.getElementById('categoryContentContainer');
+            const backToMenuButton = document.getElementById('backToMenuButton');
+            const menuItems = document.querySelectorAll('.menu-item');
+            const tabContents = document.querySelectorAll('.tab-content'); // Toutes les sections de contenu de catégorie
 
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Supprime la classe 'active' de tous les boutons et contenus
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
+            // État initial : le menu principal est visible, les catégories sont masquées
+            categoryContentContainer.classList.add('hidden-view');
+
+            // Gérer les clics sur les éléments du menu principal
+            menuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const targetTabId = item.dataset.targetTab;
+
+                    // Masquer l'introduction et le menu principal avec transition
+                    mainMenu.style.opacity = '0';
+                    mainMenu.style.transform = 'translateY(20px)';
+                    mainMenu.addEventListener('transitionend', function hideMainMenu() {
+                        mainMenu.classList.add('hidden');
+                        mainMenu.removeEventListener('transitionend', hideMainMenu);
+                    }, { once: true });
+
+
+                    // Préparer le conteneur de contenu de catégorie pour l'animation d'entrée
+                    categoryContentContainer.classList.remove('hidden-view');
+                    // Forcer un reflow pour que la transition s'applique
+                    void categoryContentContainer.offsetHeight;
+                    categoryContentContainer.classList.add('active-view');
+
+                    // Masquer tous les contenus d'onglet, puis afficher le contenu cible
                     tabContents.forEach(content => content.classList.remove('active'));
-
-                    // Ajoute la classe 'active' au bouton cliqué
-                    button.classList.add('active');
-
-                    // Affiche le contenu de l'onglet correspondant avec une transition
-                    const targetTabId = button.dataset.tab;
                     const targetContent = document.getElementById(targetTabId);
                     if (targetContent) {
                         targetContent.classList.add('active');
@@ -592,7 +889,31 @@
                 });
             });
 
-            // --- Fonctions Gemini API ---
+            // Gérer le clic sur le bouton "Retour au menu"
+            backToMenuButton.addEventListener('click', () => {
+                // Lancer la transition de sortie pour le conteneur de contenu de catégorie
+                categoryContentContainer.classList.remove('active-view');
+
+                // Attendre la fin de la transition pour masquer complètement
+                categoryContentContainer.addEventListener('transitionend', function handler() {
+                    categoryContentContainer.classList.add('hidden-view'); // Masquer après l'animation
+
+                    // Réinitialiser le menu principal pour l'animation d'entrée
+                    mainMenu.classList.remove('hidden');
+                    mainMenu.style.opacity = '0';
+                    mainMenu.style.transform = 'translateY(20px)';
+                    void mainMenu.offsetHeight; // Force reflow
+                    mainMenu.style.opacity = '1';
+                    mainMenu.style.transform = 'translateY(0)';
+
+                    // Nettoyer : retirer la classe active de tout contenu d'onglet
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    categoryContentContainer.removeEventListener('transitionend', handler);
+                }, { once: true }); // S'assurer que le gestionnaire ne s'exécute qu'une seule fois
+            });
+
+
+            // --- Fonctions Gemini API (pour trouver ID objet et expliquer commande) ---
 
             // Fonction pour trouver l'ID d'un objet
             const itemNameInput = document.getElementById('itemNameInput');
@@ -616,11 +937,13 @@
                 itemIdResult.classList.add('hidden'); // Cacher le résultat précédent
 
                 try {
+                    // ATTENTION: Si tu héberges ce code sur GitHub Pages, tu dois mettre ta clé API Gemini ici.
+                    // Pour le moment, elle est vide pour des raisons de sécurité dans l'exemple public.
+                    const apiKey = "AIzaSyDypVl4SsnHAf6zjV4K9jKk9oVpEDl95Y4"; // Remplace par ta clé API Gemini si tu déploies sur GitHub Pages !
                     const prompt = `Donne l'identifiant technique Minecraft Bedrock de l'objet ou concept suivant pour la commande /give. Réponds uniquement avec l'identifiant technique et rien d'autre. Si plusieurs correspondent, donne le plus courant. Si aucun match direct, suggère le plus proche. Exemple: 'pioche en diamant' -> 'diamond_pickaxe'. Objet: ${itemName}`;
                     let chatHistory = [];
                     chatHistory.push({ role: "user", parts: [{ text: prompt }] });
                     const payload = { contents: chatHistory };
-                    const apiKey = ""; // Laisser vide, sera fournie par Canvas
                     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
                     const response = await fetch(apiUrl, {
@@ -640,15 +963,17 @@
 
                     itemIdResult.textContent = `Identifiant suggéré : ${generatedText}`;
                     itemIdResult.classList.remove('hidden');
-                    itemIdResult.style.backgroundColor = '#e6f7ff'; // Remettre bleu clair
-                    itemIdResult.style.borderColor = '#b3e0ff';
+                    itemIdResult.style.backgroundColor = '#3a3a3a'; // Remettre sombre
+                    itemIdResult.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                    itemIdResult.style.color = '#c0c0c0'; // Texte clair
 
                 } catch (error) {
                     console.error("Erreur lors de l'appel à l'API Gemini pour l'ID d'objet :", error);
-                    itemIdResult.textContent = "Une erreur est survenue. Veuillez réessayer.";
+                    itemIdResult.textContent = "Une erreur est survenue. Veuillez réessayer. (Si tu as déployé ce code sur GitHub Pages, assure-toi d'avoir inséré ta clé API Gemini dans le code).";
                     itemIdResult.classList.remove('hidden');
                     itemIdResult.style.backgroundColor = '#ffe6e6'; // Rouge clair pour erreur
                     itemIdResult.style.borderColor = '#ffcccc';
+                    itemIdResult.style.color = '#cc0000'; // Texte rouge
                 } finally {
                     // Cacher le spinner et réactiver le bouton
                     findItemIdSpinner.classList.add('hidden');
@@ -669,6 +994,7 @@
                     explainCommandResult.classList.remove('hidden');
                     explainCommandResult.style.backgroundColor = '#fff3cd'; // Jaune clair pour avertissement
                     explainCommandResult.style.borderColor = '#ffeeba';
+                    explainCommandResult.style.color = '#cc8800'; // Texte orange
                     return;
                 }
 
@@ -678,11 +1004,12 @@
                 explainCommandResult.classList.add('hidden'); // Cacher le résultat précédent
 
                 try {
+                    // ATTENTION: Si tu héberges ce code sur GitHub Pages, tu dois mettre ta clé API Gemini ici.
+                    const apiKey = "AIzaSyDypVl4SsnHAf6zjV4K9jKk9oVpEDl95Y4"; // Remplace par ta clé API Gemini si tu déploies sur GitHub Pages !
                     const prompt = `Explique la commande ou le concept Minecraft Bedrock suivant en termes très simples et concis pour une débutante, et donne un exemple concret d'utilisation. Contexte: l'utilisateur apprend les commandes Minecraft. Commande/Concept: ${query}`;
                     let chatHistory = [];
                     chatHistory.push({ role: "user", parts: [{ text: prompt }] });
                     const payload = { contents: chatHistory };
-                    const apiKey = ""; // Laisser vide, sera fournie par Canvas
                     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
                     const response = await fetch(apiUrl, {
@@ -702,19 +1029,138 @@
 
                     explainCommandResult.textContent = generatedText;
                     explainCommandResult.classList.remove('hidden');
-                    explainCommandResult.style.backgroundColor = '#e6f7ff'; // Remettre bleu clair
-                    explainCommandResult.style.borderColor = '#b3e0ff';
+                    explainCommandResult.style.backgroundColor = '#3a3a3a'; // Remettre sombre
+                    explainCommandResult.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                    explainCommandResult.style.color = '#c0c0c0'; // Texte clair
 
                 } catch (error) {
                     console.error("Erreur lors de l'appel à l'API Gemini pour l'explication de commande :", error);
-                    explainCommandResult.textContent = "Une erreur est survenue. Veuillez réessayer.";
-                    explainCommandResult.classList.remove('hidden');
-                    explainCommandResult.style.backgroundColor = '#ffe6e6'; // Rouge clair pour erreur
-                    explainCommandResult.style.borderColor = '#ffcccc';
+                    explainCommandResult.textContent = "Une erreur est survenue. Veuillez réessayer. (Si tu as déployé ce code sur GitHub Pages, assure-toi d'avoir inséré ta clé API Gemini dans le code).";
+                    itemIdResult.classList.remove('hidden');
+                    itemIdResult.style.backgroundColor = '#ffe6e6'; // Rouge clair pour erreur
+                    itemIdResult.style.borderColor = '#ffcccc';
+                    itemIdResult.style.color = '#cc0000'; // Texte rouge
                 } finally {
                     // Cacher le spinner et réactiver le bouton
                     explainCommandSpinner.classList.add('hidden');
                     explainCommandButton.disabled = false;
+                }
+            });
+
+            // --- Liste des Mobs (directement dans le code) ---
+            const getMobListButton = document.getElementById('getMobListButton');
+            const mobListModal = document.getElementById('mobListModal');
+            const mobListModalBackButton = document.getElementById('mobListModalBackButton');
+            const mobListLoading = document.getElementById('mobListLoading');
+            const mobListResult = document.getElementById('mobListResult');
+
+            // Données des mobs intégrées directement dans le code
+            const mobsData = [
+                // Utilité: Essentiel / Survie
+                { nom: "Cochon", id_technique: "pig", utilite_principale: "Nourriture, XP" },
+                { nom: "Vache", id_technique: "cow", utilite_principale: "Nourriture, cuir, XP" },
+                { nom: "Mouton", id_technique: "sheep", utilite_principale: "Laine, nourriture, XP" },
+                { nom: "Poulet", id_technique: "chicken", utilite_principale: "Nourriture, plumes, XP" },
+                { nom: "Lapin", id_technique: "rabbit", utilite_principale: "Nourriture, cuir, XP" },
+                { nom: "Poisson Tropical", id_technique: "tropical_fish", utilite_principale: "Nourriture, décoration, reproduction des chats" },
+                { nom: "Morue", id_technique: "cod", utilite_principale: "Nourriture" },
+                { nom: "Saumon", id_technique: "salmon", utilite_principale: "Nourriture" },
+                { nom: "Poulpe", id_technique: "squid", utilite_principale: "Sac d'encre" },
+                // Hostiles / Défense
+                { nom: "Zombie", id_technique: "zombie", utilite_principale: "Chair putréfiée, XP" },
+                { nom: "Squelette", id_technique: "skeleton", utilite_principale: "Os, flèches, XP" },
+                { nom: "Creeper", id_technique: "creeper", utilite_principale: "Poudre à canon, disques de musique (si tué par squelette), XP" },
+                { nom: "Araignée", id_technique: "spider", utilite_principale: "Ficelle, œil d'araignée, XP" },
+                { nom: "Enderman", id_technique: "enderman", utilite_principale: "Perle de l'End, XP" },
+                { nom: "Slime", id_technique: "slime", utilite_principale: "Boule de slime" },
+                { nom: "Ghast", id_technique: "ghast", utilite_principale: "Larme de Ghast, poudre à canon" },
+                { nom: "Blaze", id_technique: "blaze", utilite_principale: "Bâton de Blaze" },
+                { nom: "Magma Cube", id_technique: "magma_cube", utilite_principale: "Crème de magma" },
+                { nom: "Wither Skeleton", id_technique: "wither_skeleton", utilite_principale: "Os, charbon, tête de Wither Skeleton" },
+                { nom: "Husk", id_technique: "husk", utilite_principale: "Chair putréfiée (ne donne pas faim)" },
+                { nom: "Drowned", id_technique: "drowned", utilite_principale: "Chair putréfiée, trident (rare)" },
+                { nom: "Phantôme", id_technique: "phantom", utilite_principale: "Membrane de Phantôme" },
+                { nom: "Witch", id_technique: "witch", utilite_principale: "Bâtons, poudre à canon, sucre, redstone, fioles vides, potions" },
+                { nom: "Vagabond (Stray)", id_technique: "stray", utilite_principale: "Flèches de lenteur, os, flèches" },
+                // Passifs / Utiles
+                { nom: "Villageois", id_technique: "villager", utilite_principale: "Commerce" },
+                { nom: "Marchand Ambulant", id_technique: "wandering_trader", utilite_principale: "Commerce de ressources rares" },
+                { nom: "Lama", id_technique: "llama", utilite_principale: "Transport d'objets, décoration" },
+                { nom: "Cheval", id_technique: "horse", utilite_principale: "Transport rapide" },
+                { nom: "Âne", id_technique: "donkey", utilite_principale: "Transport d'objets (coffre)" },
+                { nom: "Mule", id_technique: "mule", utilite_principale: "Transport d'objets (coffre)" },
+                { nom: "Ocelot", id_technique: "ocelot", utilite_principale: "Apprivoisable, effraie les Creepers" },
+                { nom: "Chat", id_technique: "cat", utilite_principale: "Apprivoisable, effraie les Phantômes, apporte des cadeaux" },
+                { nom: "Chien (Loup Apprivoisé)", id_technique: "wolf", utilite_principale: "Compagnon, attaque les monstres" },
+                { nom: "Renard", id_technique: "fox", utilite_principale: "Décoration, peut tenir des objets" },
+                { nom: "Axolotl", id_technique: "axolotl", utilite_principale: "Combat sous-marin, régénération, mignon" },
+                { nom: "Dauphin", id_technique: "dolphin", utilite_principale: "Aide à nager vite, peut révéler des trésors" },
+                { nom: "Tortue", id_technique: "turtle", utilite_principale: "Écailles de Tortue" },
+                { nom: "Panda", id_technique: "panda", utilite_principale: "Décoration, bambou" },
+                { nom: "Goat (Chèvre)", id_technique: "goat", utilite_principale: "Corne de Chèvre" },
+                { nom: "Glow Squid", id_technique: "glow_squid", utilite_principale: "Pochon d'encre lumineuse" },
+                { nom: "Allay", id_technique: "allay", utilite_principale: "Collecte d'objets" },
+                { nom: "Camel (Chameau)", id_technique: "camel", utilite_principale: "Transport à deux joueurs, haut" },
+                { nom: "Sniffer", id_technique: "sniffer", utilite_principale: "Découverte de graines de plantes anciennes" },
+                { nom: "Frog (Grenouille)", id_technique: "frog", utilite_principale: "Bloc de lumière de grenouille" },
+                { nom: "Bee (Abeille)", id_technique: "bee", utilite_principale: "Miel, agriculture" },
+                // Neutres / Défi
+                { nom: "Ours Polaire", id_technique: "polar_bear", utilite_principale: "Décoration (neutre/hostile si bébé est attaqué)" },
+                { nom: "Chauve-souris", id_technique: "bat", utilite_principale: "Décoration (inutile)" },
+                // Illagers
+                { nom: "Pillager", id_technique: "pillager", utilite_principale: "Arbalète, bannière (rare)" },
+                { nom: "Vindicator", id_technique: "vindicator", utilite_principale: "Émeraude, hache de fer" },
+                { nom: "Evoker", id_technique: "evoker", utilite_principale: "Totem d'Undying, Émeraude" },
+                { nom: "Ravager", id_technique: "ravager", utilite_principale: "Selle" },
+                // End / Stronghold
+                { nom: "Shulker", id_technique: "shulker", utilite_principale: "Coque de Shulker" },
+                { nom: "Endermite", id_technique: "endermite", utilite_principale: "XP (rare, mais surtout nuisance)" },
+                // Nether
+                { nom: "Zoglin", id_technique: "zoglin", utilite_principale: "Chair putréfiée (agressif)" },
+                { nom: "Hoglin", id_technique: "hoglin", utilite_principale: "Nourriture, cuir, XP" },
+                { nom: "Piglin Brute", id_technique: "piglin_brute", utilite_principale: "Défi (pas de troc)" },
+                { nom: "Piglin", id_technique: "piglin", utilite_principale: "Troc avec l'or" },
+                { nom: "Strider", id_technique: "strider", utilite_principale: "Transport dans le Nether" },
+                // Boss / Spéciaux
+                { nom: "Warden", id_technique: "warden", utilite_principale: "Défi, XP (très dangereux)" },
+                { nom: "Garde de l'Océan (Guardian)", id_technique: "guardian", utilite_principale: "Éclat de Prisme, Cristal de Prisme, Poisson" },
+                { nom: "Elder Guardian", id_technique: "elder_guardian", utilite_principale: "Éclat de Prisme, Cristal de Prisme, Poisson, Éponge Mouillée" },
+                { nom: "Vex", id_technique: "vex", utilite_principale: "XP (invoqué par Evoker)" },
+                { nom: "Garde de Foudre (Lightning Bolt)", id_technique: "lightning_bolt", utilite_principale: "Transforme les Creepers, Cochons, Villageois" },
+                { nom: "Wither", id_technique: "wither", utilite_principale: "Étoile du Nether" },
+                { nom: "Dragon de l'End", id_technique: "ender_dragon", utilite_principale: "Accès à l'End, XP immense" }
+            ];
+
+            getMobListButton.addEventListener('click', () => {
+                mobListModal.classList.add('open'); // Ouvrir le modal
+                mobListLoading.classList.add('hidden'); // S'assurer que le spinner est caché car la liste est instantanée
+                mobListResult.innerHTML = ''; // Nettoyer les résultats précédents
+
+                let mobListHtml = '';
+                mobsData.forEach(mob => {
+                    mobListHtml += `
+                        <div class="mob-list-item">
+                            <p class="font-semibold text-lg text-gray-700">${mob.nom}</p>
+                            <p class="text-gray-600">ID: <code>${mob.id_technique}</code></p>
+                            <p class="text-gray-500">Utilité: ${mob.utilite_principale}</p>
+                        </div>
+                    `;
+                });
+                mobListResult.innerHTML = mobListHtml;
+                mobListResult.classList.remove('hidden'); // Afficher la liste
+
+                getMobListButton.disabled = false; // Réactiver le bouton principal (s'il avait été désactivé par un appel précédent)
+            });
+
+            // Fermer le modal avec le bouton retour
+            mobListModalBackButton.addEventListener('click', () => {
+                mobListModal.classList.remove('open');
+            });
+
+            // Fermer le modal en cliquant en dehors (optionnel, mais bon pour l'UX)
+            mobListModal.addEventListener('click', (event) => {
+                if (event.target === mobListModal) {
+                    mobListModal.classList.remove('open');
                 }
             });
         });
