@@ -74,7 +74,7 @@
 
         /* Contenu des onglets */
         .tab-content {
-            display: none; /* Masqué par défaut, affiché par JS */
+            display: none; /* Masqué par default, affiché par JS */
             padding: 2.5rem; /* Padding accru */
             background-color: #2a2a2a; /* Fond sombre pour le contenu d'onglet */
             border-radius: 18px; /* Coins arrondis */
@@ -469,7 +469,7 @@
                 </div>
             </section>
 
-            <!-- Contenu des catégories (masqué par défaut, affiché via le menu) -->
+            <!-- Contenu des catégories (masqué par default, affiché via le menu) -->
             <div id="categoryContentContainer" class="relative hidden-view">
                 <button id="backToMenuButton" class="back-button absolute top-4 left-4 flex items-center bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors duration-200 py-2 px-3 rounded-xl font-medium shadow-sm">
                     <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
@@ -775,13 +775,13 @@
                 <div id="general-help" class="tab-content">
                     <h3 class="text-2xl font-bold text-gray-100 mb-6 mt-12">Aide Générale sur les Commandes ✨</h3>
                     <p class="text-gray-300 mb-4">
-                        Besoin d'une explication sur une commande que tu as vue, ou un concept de Minecraft que tu ne comprends pas ? Demande à Gemini !
+                        Demande-moi n'importe quelle commande ou information sur un concept Minecraft. Je te dirai si c'est compatible Bedrock !
                     </p>
                     <div class="gemini-input-group flex-col">
-                        <textarea id="commandExplainerInput" rows="4" placeholder="Ex: Qu'est-ce que la commande /execute ? Ou: Comment fonctionnent les coordonnées Y ?" class="w-full"></textarea>
+                        <textarea id="commandExplainerInput" rows="4" placeholder="Ex: commande pour donner de l'xp, ou: formule pour calculer la distance entre deux points" class="w-full"></textarea>
                         <button id="explainCommandButton" class="gemini-button">
                             <span id="explainCommandSpinner" class="spinner hidden"></span>
-                            Obtenir une explication
+                            Obtenir la réponse
                         </button>
                     </div>
                     <div id="explainCommandResult" class="gemini-result hidden"></div>
@@ -818,6 +818,7 @@
                         </li>
                     </ul>
                 </div>
+
             </div>
         </main>
 
@@ -939,7 +940,7 @@
                 try {
                     // ATTENTION: Si tu héberges ce code sur GitHub Pages, tu dois mettre ta clé API Gemini ici.
                     // Pour le moment, elle est vide pour des raisons de sécurité dans l'exemple public.
-                    const apiKey = "AIzaSyDypVl4SsnHAf6zjV4K9jKk9oVpEDl95Y4"; // Remplace par ta clé API Gemini si tu déploies sur GitHub Pages !
+                    const apiKey = ""; // Remplace par ta clé API Gemini si tu déploies sur GitHub Pages !
                     const prompt = `Donne l'identifiant technique Minecraft Bedrock de l'objet ou concept suivant pour la commande /give. Réponds uniquement avec l'identifiant technique et rien d'autre. Si plusieurs correspondent, donne le plus courant. Si aucun match direct, suggère le plus proche. Exemple: 'pioche en diamant' -> 'diamond_pickaxe'. Objet: ${itemName}`;
                     let chatHistory = [];
                     chatHistory.push({ role: "user", parts: [{ text: prompt }] });
@@ -961,7 +962,7 @@
                         generatedText = result.candidates[0].content.parts[0].text.trim();
                     }
 
-                    itemIdResult.textContent = `Identifiant suggéré : ${generatedText}`;
+                    itemIdResult.textContent = generatedText; // Affichage direct
                     itemIdResult.classList.remove('hidden');
                     itemIdResult.style.backgroundColor = '#3a3a3a'; // Remettre sombre
                     itemIdResult.style.borderColor = 'rgba(255, 255, 255, 0.1)';
@@ -990,7 +991,7 @@
             explainCommandButton.addEventListener('click', async () => {
                 const query = commandExplainerInput.value.trim();
                 if (!query) {
-                    explainCommandResult.textContent = "Veuillez taper une commande ou un concept à expliquer.";
+                    explainCommandResult.textContent = "Veuillez taper une commande ou un concept pour obtenir la réponse.";
                     explainCommandResult.classList.remove('hidden');
                     explainCommandResult.style.backgroundColor = '#fff3cd'; // Jaune clair pour avertissement
                     explainCommandResult.style.borderColor = '#ffeeba';
@@ -1005,8 +1006,11 @@
 
                 try {
                     // ATTENTION: Si tu héberges ce code sur GitHub Pages, tu dois mettre ta clé API Gemini ici.
-                    const apiKey = "AIzaSyDypVl4SsnHAf6zjV4K9jKk9oVpEDl95Y4"; // Remplace par ta clé API Gemini si tu déploies sur GitHub Pages !
-                    const prompt = `Explique la commande ou le concept Minecraft Bedrock suivant en termes très simples et concis pour une débutante, et donne un exemple concret d'utilisation. Contexte: l'utilisateur apprend les commandes Minecraft. Commande/Concept: ${query}`;
+                    const apiKey = ""; // Remplace par ta clé API Gemini si tu déploies sur GitHub Pages !
+                    // Prompt modifié pour demander la compatibilité Bedrock et une réponse directe ou un message spécifique
+                    const prompt = `Pour la commande ou le concept Minecraft suivant "${query}", est-il disponible et fonctionne-t-il comme prévu dans Minecraft Bedrock Edition ?
+                    Si oui, donne la commande exacte ou la réponse directe, sans aucune explication ou préambule.
+                    Si non, réponds uniquement par "NON_BEDROCK_COMPATIBLE".`;
                     let chatHistory = [];
                     chatHistory.push({ role: "user", parts: [{ text: prompt }] });
                     const payload = { contents: chatHistory };
@@ -1019,7 +1023,7 @@
                     });
 
                     const result = await response.json();
-                    let generatedText = "Désolé, je n'ai pas pu générer d'explication pour cela.";
+                    let generatedText = "Désolé, je n'ai pas pu trouver la réponse exacte pour cela.";
 
                     if (result.candidates && result.candidates.length > 0 &&
                         result.candidates[0].content && result.candidates[0].content.parts &&
@@ -1027,16 +1031,25 @@
                         generatedText = result.candidates[0].content.parts[0].text.trim();
                     }
 
-                    explainCommandResult.textContent = generatedText;
+                    // Vérifie si Gemini a indiqué que ce n'est pas compatible Bedrock
+                    if (generatedText === "NON_BEDROCK_COMPATIBLE") {
+                        explainCommandResult.textContent = "la version bedrock est trop guez pour des commandes de ce style ...";
+                        explainCommandResult.style.backgroundColor = '#ffe6e6'; // Rouge clair pour l'erreur
+                        explainCommandResult.style.borderColor = '#ffcccc';
+                        explainCommandResult.style.color = '#cc0000'; // Texte rouge
+                    } else {
+                        explainCommandResult.textContent = generatedText; // Affichage direct
+                        explainCommandResult.style.backgroundColor = '#3a3a3a'; // Remettre sombre
+                        explainCommandResult.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                        explainCommandResult.style.color = '#c0c0c0'; // Texte clair
+                    }
+
                     explainCommandResult.classList.remove('hidden');
-                    explainCommandResult.style.backgroundColor = '#3a3a3a'; // Remettre sombre
-                    explainCommandResult.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                    explainCommandResult.style.color = '#c0c0c0'; // Texte clair
 
                 } catch (error) {
                     console.error("Erreur lors de l'appel à l'API Gemini pour l'explication de commande :", error);
                     explainCommandResult.textContent = "Une erreur est survenue. Veuillez réessayer. (Si tu as déployé ce code sur GitHub Pages, assure-toi d'avoir inséré ta clé API Gemini dans le code).";
-                    itemIdResult.classList.remove('hidden');
+                    itemIdResult.classList.remove('hidden'); // Cette ligne était dans le bloc d'erreur précédent, je la garde pour cohérence
                     itemIdResult.style.backgroundColor = '#ffe6e6'; // Rouge clair pour erreur
                     itemIdResult.style.borderColor = '#ffcccc';
                     itemIdResult.style.color = '#cc0000'; // Texte rouge
@@ -1140,9 +1153,9 @@
                 mobsData.forEach(mob => {
                     mobListHtml += `
                         <div class="mob-list-item">
-                            <p class="font-semibold text-lg text-gray-700">${mob.nom}</p>
-                            <p class="text-gray-600">ID: <code>${mob.id_technique}</code></p>
-                            <p class="text-gray-500">Utilité: ${mob.utilite_principale}</p>
+                            <p class="font-semibold text-lg">${mob.nom}</p>
+                            <p class="text-base">ID: <code>${mob.id_technique}</code></p>
+                            <p class="text-sm">Utilité: ${mob.utilite_principale}</p>
                         </div>
                     `;
                 });
